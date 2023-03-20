@@ -1,4 +1,4 @@
-import { prisma } from './config/prisma.config.js';
+import { prisma } from '../config/prisma.config.js';
 
 export const createLesson = async (req, res) => {
     try {

@@ -17,8 +17,13 @@ export const login = async (req, res) => {
         const isValidPass = await bcrypt.compare(req.body.password, user.password)
 
         if (!isValidPass) {
-            res.status(401).json({
+            return res.status(401).json({
                 message: 'Неверное имя пользователя или пароль'
+            })
+        }
+        if (!user.payed) {
+            return res.status(401).json({
+                message: 'Доступ запрещен'
             })
         }
         const token = jwt.sign({
