@@ -28,7 +28,8 @@ export const login = async (req, res) => {
         }
         const token = jwt.sign({
                 id: user.id,
-                email: user.email
+                email: user.email,
+                role: user.role
             }, process.env.ACCESS_TOKEN,
             {
                 expiresIn: '30d'
@@ -56,7 +57,9 @@ export const register = async (req, res) => {
         const newUser = await prisma.user.create({
             data: {
                 email: req.body.email,
-                password: passwordHash
+                password: passwordHash,
+                role: req.body.role || 'User',
+                payed: req.body.payed || false
             }
         })
         const {password, ...userData} = newUser
