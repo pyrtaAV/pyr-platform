@@ -20,3 +20,14 @@ export const createLesson = async (req, res) => {
         })
     }
 }
+
+export const getLessons = async (req, res) => {
+    try {
+        const lessons = await prisma.lesson.findMany()
+    } catch {
+        console.log(err)
+        res.status(500).json({
+            message: "Что то пошло не так!"
+        })
+    }
+}
