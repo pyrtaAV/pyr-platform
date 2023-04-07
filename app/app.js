@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(cors({
     'allowedHeaders': ['sessionId', 'Content-Type', 'Authorization', 'authorization'],
     'exposedHeaders': ['sessionId'],
-    'origin': ['https://eccentrictoad.com', 'https://www.eccentrictoad.com'],
+    'origin': ['http://localhost:3000'],
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
     'credentials': false,
     'preflightContinue': false
