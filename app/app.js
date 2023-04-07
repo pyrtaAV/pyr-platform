@@ -22,7 +22,7 @@ app.get('/lessons/',checkAuth, getLessons)
 app.get('/admin', checkAuth, isAdmin, verifyUsers)
 
 async function main() {
-    app.listen(4445, () => {
+    app.listen(3000, () => {
         console.log('Server starting on port: 4445')
     })
 }
