@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import cors from "cors"
 
 import { registerValidator } from "./middleware/validations.js";
 import checkAuth from "./middleware/checkAuth.js";
@@ -10,12 +11,16 @@ import isAdmin from './middleware/isAdmin.js';
 import { verifyUsers } from './controllers/admin_controller.js';
 
 const app = express()
-const cors = require("cors")
 
 app.use(express.json())
 app.use(cors({
-    origin: "http://localhost:3000"
-}))
+    'allowedHeaders': ['sessionId', 'Content-Type', 'Authorization', 'authorization'],
+    'exposedHeaders': ['sessionId'],
+    'origin': ['https://eccentrictoad.com', 'https://www.eccentrictoad.com'],
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'credentials': false,
+    'preflightContinue': false
+  }));
 dotenv.config()
 
 app.get('/', (req, res) => {
