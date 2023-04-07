@@ -10,8 +10,12 @@ import isAdmin from './middleware/isAdmin.js';
 import { verifyUsers } from './controllers/admin_controller.js';
 
 const app = express()
+const cors = require("cors")
 
 app.use(express.json())
+app.use(cors({
+    origin: "http://localhost:3000"
+}))
 dotenv.config()
 
 app.get('/', (req, res) => {
