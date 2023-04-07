@@ -1,12 +1,13 @@
 {
-  "name": "pyr-platform",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "npx prisma migrate dev && nodemon ./app.js",
+    "dev": "nodemon ./app.js --exec \"npm run lint && node\"",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
