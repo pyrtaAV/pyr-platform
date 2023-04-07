@@ -14,6 +14,11 @@ const app = express()
 app.use(express.json())
 dotenv.config()
 
+app.get('/', (req, res) => {
+    res.json({
+        message: 'Hello'
+    })
+})
 app.post('/auth/login', login)
 app.post('/auth/register', registerValidator, register)
 app.get('/auth/me', checkAuth, me)
