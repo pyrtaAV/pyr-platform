@@ -41,9 +41,9 @@ export const login = async (req, res) => {
         })
     } catch (e) {
         res.status(500).json({
-            message: 'Не удалось авторизоваться',
-            error: e
+            message: 'Не удалось авторизоваться'
         })
+        console.log(e)
     }
 }
 
